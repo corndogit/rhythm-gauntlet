@@ -45,11 +45,9 @@ func _handle_input():
 		return
 
 	if Input.is_action_just_pressed("ui_attack"):
-		print("attack!")
 		attack()
 		_handle_action_cooldown()
 	elif Input.is_action_just_pressed("ui_block"):
-		print("block!")
 		block()
 		_handle_action_cooldown()
 

@@ -3,7 +3,7 @@ extends Node2D
 
 var _is_damageable = true
 @export var healthComponent : Node2D
-@export var cooldown : float = 0.5
+@export var cooldown : float = 0.1
 @onready var timer : Timer = get_node("CooldownTimer")
 
 
@@ -12,9 +12,7 @@ func _process(_delta):
 
 
 func take_damage(amount: float):
-	print("hurtbox taking damage")
 	if healthComponent and _is_damageable:
-		print(healthComponent)
 		healthComponent.take_damage(amount)
 		timer.start(cooldown)
 
