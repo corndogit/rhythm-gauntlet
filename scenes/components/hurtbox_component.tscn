@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmx4sxf2vc15g"]
+
+[ext_resource type="Script" path="res://scripts/components/HurtboxComponent.gd" id="1_wg366"]
+
+[node name="HurtboxComponent" type="Node2D"]
+script = ExtResource("1_wg366")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true

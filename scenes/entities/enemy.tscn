@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_27g40"]
+[ext_resource type="Texture2D" uid="uid://d15cfvot253uv" path="res://assets/textures/player/enemy_placeholder.png" id="2_xm7ru"]
+[ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_aeje5"]
+[ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_r5mc5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmkur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xm7ru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wc2ib"]
+height = 31.4527
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(905, 380)
+script = ExtResource("1_27g40")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hmkur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5.931, 6.35875)
+shape = SubResource("CapsuleShape2D_wc2ib")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -143.0
+offset_right = 66.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+step = 1.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_aeje5")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_r5mc5")]
+healthComponent = NodePath("../HealthComponent")
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_died" from="HealthComponent" to="." method="_on_health_component_health_died"]

@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://ccyhlt6d3aj0n"]
+[gd_scene load_steps=5 format=3 uid="uid://dgcca2h1oc41r"]
+
+[ext_resource type="PackedScene" uid="uid://dok5wkyva8udn" path="res://scenes/entities/player.tscn" id="1_c14st"]
+[ext_resource type="PackedScene" path="res://scenes/entities/enemy.tscn" id="2_ctdo2"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xlru7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgnrb"]
+size = Vector2(1288, 239)
 
 [node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_c14st")]
+base_damage = 3.0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(645, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0, 0.6, 0, 1)
+scale = Vector2(-1288.73, 239.079)
+texture = SubResource("CanvasTexture_xlru7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_rgnrb")
+
+[node name="Enemy" parent="." instance=ExtResource("2_ctdo2")]
