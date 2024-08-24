@@ -20,7 +20,6 @@ animations = [{
 height = 31.4527
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(905, 380)
 script = ExtResource("1_27g40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -49,6 +48,9 @@ step = 1.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_r5mc5")]
 healthComponent = NodePath("../HealthComponent")
+
+[node name="Sight" type="RayCast2D" parent="."]
+target_position = Vector2(-206, 0)
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="health_died" from="HealthComponent" to="." method="_on_health_component_health_died"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgcca2h1oc41r"]
+[gd_scene load_steps=7 format=3 uid="uid://fpj4h874dey6"]
 
 [ext_resource type="PackedScene" uid="uid://dok5wkyva8udn" path="res://scenes/entities/player.tscn" id="1_c14st"]
 [ext_resource type="PackedScene" uid="uid://btk0i80rjdxox" path="res://scenes/entities/enemy.tscn" id="2_ctdo2"]
-[ext_resource type="Script" path="res://scenes/LevelMusic.gd" id="3_jxftd"]
+[ext_resource type="Script" path="res://scripts/LevelMusic.gd" id="3_jc254"]
 [ext_resource type="AudioStream" uid="uid://4v7drlakdmgd" path="res://assets/sounds/120bpm.ogg" id="4_fx7na"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xlru7"]
@@ -12,9 +12,9 @@ size = Vector2(1288, 239)
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_c14st")]
-base_damage = 3.0
+[node name="Player" parent="." node_paths=PackedStringArray("level_music") instance=ExtResource("1_c14st")]
 action_delay = 0.1
+level_music = NodePath("../LevelMusic")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(645, 600)
@@ -27,10 +27,20 @@ texture = SubResource("CanvasTexture_xlru7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("RectangleShape2D_rgnrb")
 
-[node name="Enemy" parent="." instance=ExtResource("2_ctdo2")]
+[node name="Enemy" parent="." node_paths=PackedStringArray("level_music") instance=ExtResource("2_ctdo2")]
+position = Vector2(1044, 379)
+level_music = NodePath("../LevelMusic")
 
 [node name="LevelMusic" type="Node" parent="."]
-script = ExtResource("3_jxftd")
+script = ExtResource("3_jc254")
+
+[node name="BeatTracker" type="AudioStreamPlayer" parent="LevelMusic"]
+stream = ExtResource("4_fx7na")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="LevelMusic"]
-stream = ExtResource("4_fx7na")
+
+[node name="DebounceTimer" type="Timer" parent="LevelMusic"]
+one_shot = true
+
+[connection signal="beat_hit" from="LevelMusic" to="Enemy" method="_on_level_music_beat_hit"]
+[connection signal="timeout" from="LevelMusic/DebounceTimer" to="LevelMusic" method="_on_debounce_timer_timeout"]
