@@ -16,10 +16,10 @@ var _is_debouncing = false
 @export var max_hp : float = 10
 
 @onready var hp_bar : ProgressBar = get_node("ProgressBar")
-@onready var health = get_node("HealthComponent")
-@onready var sight = get_node("Sight")
-@onready var sprite = get_node("AnimatedSprite2D")
-@onready var collision_shape = get_node("CollisionShape2D")
+@onready var health : HealthComponent = get_node("HealthComponent")
+@onready var sight : RayCast2D = get_node("Sight")
+@onready var sprite : AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var collision_shape : CollisionShape2D = get_node("CollisionShape2D")
 
 signal enemy_died
 
@@ -77,6 +77,8 @@ func _on_level_music_beat_hit():
 		attack(sight.get_collider())
 	
 	_beat_count = fmod(_beat_count + 1, 4)
+	sprite.set_frame(_beat_count)
+	
 	await get_tree().create_timer(0.1).timeout
 	_is_debouncing = false
 

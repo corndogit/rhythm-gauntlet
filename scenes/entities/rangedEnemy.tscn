@@ -1,16 +1,41 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3bdoa6h74qlp"]
+[gd_scene load_steps=12 format=3 uid="uid://b3bdoa6h74qlp"]
 
 [ext_resource type="Script" path="res://scripts/RangedEnemy.gd" id="1_4octs"]
-[ext_resource type="Texture2D" uid="uid://d15cfvot253uv" path="res://assets/textures/player/enemy_placeholder.png" id="2_553c6"]
+[ext_resource type="Texture2D" uid="uid://ckr83i7lsyydq" path="res://assets/textures/enemies/lizard-mage.png" id="2_04sbn"]
 [ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_f4aq6"]
 [ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_kbpfc"]
 [ext_resource type="PackedScene" uid="uid://dn78sk1peu4s5" path="res://scripts/components/fireball_emitter_component.tscn" id="5_1wjy8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmhlr"]
+atlas = ExtResource("2_04sbn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqqdo"]
+atlas = ExtResource("2_04sbn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddabc"]
+atlas = ExtResource("2_04sbn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skabr"]
+atlas = ExtResource("2_04sbn")
+region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmkur"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_553c6")
+"texture": SubResource("AtlasTexture_gmhlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqqdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddabc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skabr")
 }],
 "loop": true,
 "name": &"default",
@@ -24,7 +49,11 @@ height = 31.4527
 script = ExtResource("1_4octs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-22, -28)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_hmkur")
+frame = 1
+frame_progress = 0.489541
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5.931, 6.35875)
@@ -51,7 +80,7 @@ step = 1.0
 healthComponent = NodePath("../HealthComponent")
 
 [node name="Sight" type="RayCast2D" parent="."]
-target_position = Vector2(-1000, 0)
+target_position = Vector2(-1500, 0)
 
 [node name="FireballEmitterComponent" parent="." instance=ExtResource("5_1wjy8")]
 position = Vector2(-92, 1)

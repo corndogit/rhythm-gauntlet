@@ -1,15 +1,40 @@
-[gd_scene load_steps=7 format=3 uid="uid://btk0i80rjdxox"]
+[gd_scene load_steps=11 format=3 uid="uid://btk0i80rjdxox"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_27g40"]
-[ext_resource type="Texture2D" uid="uid://d15cfvot253uv" path="res://assets/textures/player/enemy_placeholder.png" id="2_xm7ru"]
+[ext_resource type="Texture2D" uid="uid://dh27r6t24v6qo" path="res://assets/textures/enemies/goblin.png" id="2_j504q"]
 [ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_aeje5"]
 [ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_r5mc5"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hmkur"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt63i"]
+atlas = ExtResource("2_j504q")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8i0n"]
+atlas = ExtResource("2_j504q")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aigxq"]
+atlas = ExtResource("2_j504q")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swwsx"]
+atlas = ExtResource("2_j504q")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cobag"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xm7ru")
+"texture": SubResource("AtlasTexture_mt63i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8i0n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aigxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swwsx")
 }],
 "loop": true,
 "name": &"default",
@@ -23,7 +48,11 @@ height = 31.4527
 script = ExtResource("1_27g40")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_hmkur")
+position = Vector2(-4, -29)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_cobag")
+frame = 1
+frame_progress = 0.358908
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(5.931, 6.35875)
