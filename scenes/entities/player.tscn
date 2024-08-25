@@ -74,7 +74,6 @@ offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 10.0
-step = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(160, -79)
@@ -98,7 +97,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("8_1xs0a")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="RichTextLabel" type="RichTextLabel" parent="ComboComponent"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 

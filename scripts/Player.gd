@@ -8,6 +8,7 @@ extends CharacterBody2D
 @export var level_music : LevelMusic
 
 var can_attack = true
+var is_blocking = false
 var can_be_hit = true
 var is_dead = false
 
@@ -36,6 +37,7 @@ func attack():
 
 
 func block():
+	is_blocking = true
 	if level_music.get_accuracy() >= 1:
 		sprite.play("block")
 		can_be_hit = false
@@ -96,14 +98,18 @@ func _physics_process(delta):
 
 
 func _on_health_component_health_changed(amount):
-	if hp_bar:
-		hp_bar.value = amount
-	_damage_flash(0.1)
+	if not hp_bar:
+		return
+	if amount < hp_bar.value:  # take damage
+		_color_flash(Color(1, 0.8, 0.8, 0.8))
+	elif amount > hp_bar.value:  # heal
+		_color_flash(Color(0.8, 1, 0.8, 1))
+	hp_bar.value = amount
 
 
-func _damage_flash(duration):
-	sprite.modulate = Color(1, 0.8, 0.8, 0.8)
-	await get_tree().create_timer(duration).timeout
+func _color_flash(color):
+	sprite.modulate = color
+	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color(1, 1, 1, 1)
 
 
@@ -117,6 +123,7 @@ func _on_health_component_health_died():
 func _on_block_timer_timeout():
 	sprite.play("default")
 	can_be_hit = true
+	is_blocking = false
 
 
 func _on_attack_timer_timeout():

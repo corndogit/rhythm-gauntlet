@@ -28,6 +28,7 @@ func attack(target):
 		return
 	var hurtbox = target.get_node("HurtboxComponent")
 	if hurtbox:
+		_attack_motion()
 		hurtbox.take_damage(1.0, target.can_be_hit)
 
 
@@ -61,7 +62,6 @@ func _damage_flash(duration):
 func _on_health_component_health_died():
 	visible = false
 	is_dead = true
-	disconnect("beat_hit", _on_level_music_beat_hit)
 	collision_shape.disabled = true
 	enemy_died.emit(self)
 	await get_tree().create_timer(0.5).timeout
