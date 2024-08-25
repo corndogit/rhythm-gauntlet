@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://b3bdoa6h74qlp"]
+
+[ext_resource type="Script" path="res://scripts/RangedEnemy.gd" id="1_4octs"]
+[ext_resource type="Texture2D" uid="uid://d15cfvot253uv" path="res://assets/textures/player/enemy_placeholder.png" id="2_553c6"]
+[ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_f4aq6"]
+[ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_kbpfc"]
+[ext_resource type="PackedScene" uid="uid://dn78sk1peu4s5" path="res://scripts/components/fireball_emitter_component.tscn" id="5_1wjy8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmkur"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_553c6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wc2ib"]
+height = 31.4527
+
+[node name="RangedEnemy" type="CharacterBody2D"]
+script = ExtResource("1_4octs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hmkur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(5.931, 6.35875)
+shape = SubResource("CapsuleShape2D_wc2ib")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.0
+offset_top = -143.0
+offset_right = 66.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 10.0
+step = 1.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_f4aq6")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_kbpfc")]
+healthComponent = NodePath("../HealthComponent")
+
+[node name="Sight" type="RayCast2D" parent="."]
+target_position = Vector2(-1000, 0)
+
+[node name="FireballEmitterComponent" parent="." instance=ExtResource("5_1wjy8")]
+position = Vector2(-92, 1)
+fireball_damage = 0.5
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_died" from="HealthComponent" to="." method="_on_health_component_health_died"]

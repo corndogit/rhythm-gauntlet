@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn78sk1peu4s5"]
+
+[ext_resource type="Script" path="res://scripts/components/FireballEmitterComponent.gd" id="1_5chww"]
+[ext_resource type="AudioStream" uid="uid://rpbp78xp62pt" path="res://assets/sounds/fireShoot.wav" id="2_et5o0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_83gvn"]
+
+[node name="FireballEmitterComponent" type="Area2D"]
+script = ExtResource("1_5chww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_83gvn")
+disabled = true
+
+[node name="FireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_et5o0")
