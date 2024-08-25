@@ -9,12 +9,14 @@ var can_attack = true
 var can_be_hit = true
 var is_dead = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var _beat_count = 0
 var _is_debouncing = false
 var _beat_hit = false
 
 @export var level_music : LevelMusic
 @export var max_hp : float = 10
+@export var base_damage = 1.0
 
 @onready var hp_bar : ProgressBar = get_node("ProgressBar")
 @onready var health : HealthComponent = get_node("HealthComponent")
@@ -32,7 +34,7 @@ func attack(target, delay = 0.0):
 		_attack_motion()
 		if delay > 0.0:
 			await get_tree().create_timer(delay).timeout
-		hurtbox.take_damage(1.0, target.can_be_hit)
+		hurtbox.take_damage(base_damage, target.can_be_hit)
 
 
 func _ready():
@@ -79,7 +81,6 @@ func _on_level_music_beat_hit():
 
 
 func _handle_beat(delta):
-	#	print("is debouncing: %s" % str(_is_debouncing))
 	if is_dead or _is_debouncing:
 		return
 	_is_debouncing = true

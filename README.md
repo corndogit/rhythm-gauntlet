@@ -21,6 +21,7 @@ Blocks will fail if they are close enough on beat (except when blocking fireball
 ### Third-party assets
 
 - World tileset: [Your Basic Platformer Tileset](https://fatmaw.itch.io/basic-platformer-tileset) by fatma~w
+- Font: [Retro Gaming](https://www.dafont.com/retro-gaming.font) by Daymarius
 - Music: 
   - ["Noisy Tubes"](https://opengameart.org/content/noisy-tubes) by HorrorPen
-  - ["Leading the Charge"](https://not-jam.itch.io/not-jam-music-pack-2) from Not Jam Music Pack 2 by Not Jam
+  - ["Leading the Charge"](https://not-jam.itch.io/not-jam-music-pack-2) by Not Jam

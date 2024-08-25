@@ -19,12 +19,10 @@ func _ready():
 	beat = 60.0 / bpm
 	beat_half = beat / 2.0
 	beat_16th = beat / 32.0
-	print("%s BPM: beat=%s, beat_half=%s, beat_16th=%s" % [str(bpm),str(beat),str(beat_half),str(beat_16th)])
 
 
 func _physics_process(delta):
 	var pos_mod = fposmod(_get_beat_pos(), beat)
-#	print("pos_mod: %s, delta: %s" % [str(pos_mod), str(delta)])
 	if pos_mod <= delta * 2:
 		beat_hit.emit()
 

@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://cj8lsspjovqvv"]
+
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_6q21j"]
+[ext_resource type="Script" path="res://scripts/LevelMusic.gd" id="1_djefj"]
+[ext_resource type="Texture2D" uid="uid://ywbajbfyyrkp" path="res://assets/textures/level/Background.png" id="2_unsvj"]
+[ext_resource type="Theme" uid="uid://q2eairjeeypw" path="res://resources/ui_theme.tres" id="2_v0jtl"]
+[ext_resource type="AudioStream" uid="uid://4v7drlakdmgd" path="res://assets/sounds/music/120bpm.ogg" id="2_xajoq"]
+[ext_resource type="Texture2D" uid="uid://bgjdv14ohmix" path="res://icon.svg" id="3_jkl87"]
+[ext_resource type="TileSet" uid="uid://y6md6t0bnnt3" path="res://resources/level_tile_set.tres" id="4_aq51a"]
+[ext_resource type="AudioStream" uid="uid://bqm20xq22smip" path="res://assets/sounds/ui/accept.wav" id="9_hg1qs"]
+[ext_resource type="PackedScene" uid="uid://dok5wkyva8udn" path="res://scenes/entities/player.tscn" id="13_6aqsr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nywao"]
+font_size = 48
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_6q21j")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 378.0
+theme = ExtResource("2_v0jtl")
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_unsvj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -389.0
+offset_top = -80.5
+offset_right = 389.0
+offset_bottom = 80.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleContainer" type="HBoxContainer" parent="Control/Background/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="Control/Background/VBoxContainer/TitleContainer"]
+layout_mode = 2
+texture = ExtResource("3_jkl87")
+
+[node name="Label" type="Label" parent="Control/Background/VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "TWO BUTTON BASHERS"
+label_settings = SubResource("LabelSettings_nywao")
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Control/Background/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayGameButton" type="Button" parent="Control/Background/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Play Game"
+
+[node name="TutorialButton" type="Button" parent="Control/Background/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Tutorial"
+
+[node name="OptionsButton" type="Button" parent="Control/Background/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Options
+"
+
+[node name="LevelMusic" type="Node" parent="."]
+script = ExtResource("1_djefj")
+bpm = 130.0
+
+[node name="BeatTracker" type="AudioStreamPlayer" parent="LevelMusic"]
+stream = ExtResource("2_xajoq")
+volume_db = 1.0
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="LevelMusic"]
+volume_db = -10.622
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_aq51a")
+format = 2
+layer_0/tile_data = PackedInt32Array(589823, 3, 2, 655359, 3, 3, 720895, 3, 4, 786431, 3, 5, 851967, 3, 6, 917503, 3, 7, 524288, 65539, 2, 589824, 65539, 3, 655360, 65539, 4, 720896, 65539, 5, 786432, 65539, 6, 851968, 65539, 7, 524289, 131075, 2, 589825, 131075, 3, 655361, 131075, 4, 720897, 131075, 5, 786433, 131075, 6, 851969, 131075, 7, 524290, 196611, 2, 589826, 196611, 3, 655362, 196611, 4, 720898, 196611, 5, 786434, 196611, 6, 851970, 196611, 7, 524291, 131075, 2, 589827, 131075, 3, 655363, 131075, 4, 720899, 131075, 5, 786435, 131075, 6, 851971, 131075, 7, 524292, 196611, 2, 589828, 196611, 3, 655364, 196611, 4, 720900, 196611, 5, 786436, 196611, 6, 851972, 196611, 7, 524293, 131075, 2, 589829, 131075, 3, 655365, 131075, 4, 720901, 131075, 5, 786437, 131075, 6, 851973, 131075, 7, 524294, 196611, 2, 589830, 196611, 3, 655366, 196611, 4, 720902, 196611, 5, 786438, 196611, 6, 851974, 196611, 7, 524295, 131075, 2, 589831, 131075, 3, 655367, 131075, 4, 720903, 131075, 5, 786439, 131075, 6, 851975, 131075, 7, 524296, 196611, 2, 589832, 196611, 3, 655368, 196611, 4, 720904, 196611, 5, 786440, 196611, 6, 851976, 196611, 7, 524297, 131075, 2, 589833, 131075, 3, 655369, 131075, 4, 720905, 131075, 5, 786441, 131075, 6, 851977, 131075, 7, 524298, 196611, 2, 589834, 196611, 3, 655370, 196611, 4, 720906, 196611, 5, 786442, 196611, 6, 851978, 196611, 7, 524299, 131075, 2, 589835, 131075, 3, 655371, 131075, 4, 720907, 131075, 5, 786443, 131075, 6, 851979, 131075, 7, 524300, 196611, 2, 589836, 196611, 3, 655372, 196611, 4, 720908, 196611, 5, 786444, 196611, 6, 851980, 196611, 7, 524301, 131075, 2, 589837, 131075, 3, 655373, 131075, 4, 720909, 131075, 5, 786445, 131075, 6, 851981, 131075, 7, 524302, 196611, 2, 589838, 196611, 3, 655374, 196611, 4, 720910, 196611, 5, 786446, 196611, 6, 851982, 196611, 7, 458752, 5, 3, 458753, 65541, 3, 458762, 131077, 3, 458763, 196613, 3, 524303, 131075, 2, 589839, 131075, 3, 655375, 131075, 4, 720911, 131075, 5, 786447, 131075, 6, 851983, 131075, 7, 524304, 196611, 2, 589840, 196611, 3, 655376, 196611, 4, 720912, 196611, 5, 786448, 196611, 6, 851984, 196611, 7, 524305, 262147, 2, 589841, 262147, 3, 655377, 262147, 4, 720913, 262147, 5, 786449, 262147, 6, 851985, 262147, 7, 524306, 327683, 2, 589842, 327683, 3, 655378, 327683, 4, 720914, 327683, 5, 786450, 327683, 6, 851986, 327683, 7, 393232, 4, 0, 458768, 4, 1, 393233, 65540, 0, 458769, 65540, 1)
+
+[node name="Player" parent="." node_paths=PackedStringArray("level_music") instance=ExtResource("13_6aqsr")]
+texture_repeat = 2
+position = Vector2(945, 429)
+disable_mode = 1
+action_delay = 0.1
+level_music = NodePath("../LevelMusic")
+
+[node name="AcceptSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_hg1qs")
+
+[connection signal="pressed" from="Control/Background/VBoxContainer/ButtonsContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]

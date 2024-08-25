@@ -32,7 +32,7 @@ func attack():
 		var hurtbox = enemy.get_node("HurtboxComponent")
 		if hurtbox:
 			var damage_dealt = base_damage * level_music.get_accuracy()
-			hurtbox.take_damage(damage_dealt)
+			hurtbox.take_damage(damage_dealt, enemy.can_be_hit)
 			enemy_hit.emit(damage_dealt)
 
 
