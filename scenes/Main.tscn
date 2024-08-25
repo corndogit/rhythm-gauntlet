@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://fpj4h874dey6"]
+[gd_scene load_steps=9 format=3 uid="uid://1oxssc6aksab"]
 
 [ext_resource type="PackedScene" uid="uid://dok5wkyva8udn" path="res://scenes/entities/player.tscn" id="1_c14st"]
 [ext_resource type="PackedScene" uid="uid://btk0i80rjdxox" path="res://scenes/entities/enemy.tscn" id="2_ctdo2"]
+[ext_resource type="AudioStream" uid="uid://4v7drlakdmgd" path="res://assets/sounds/music/120bpm.ogg" id="2_xms24"]
 [ext_resource type="Script" path="res://scripts/LevelMusic.gd" id="3_jc254"]
-[ext_resource type="AudioStream" uid="uid://4v7drlakdmgd" path="res://assets/sounds/120bpm.ogg" id="4_fx7na"]
 [ext_resource type="TileSet" uid="uid://y6md6t0bnnt3" path="res://resources/level_tile_set.tres" id="5_eaoty"]
 [ext_resource type="Texture2D" uid="uid://ywbajbfyyrkp" path="res://assets/textures/level/Background.png" id="6_br3nx"]
 [ext_resource type="PackedScene" uid="uid://b3bdoa6h74qlp" path="res://scenes/entities/rangedEnemy.tscn" id="7_xjtex"]
@@ -15,7 +15,7 @@
 script = ExtResource("3_jc254")
 
 [node name="BeatTracker" type="AudioStreamPlayer" parent="LevelMusic"]
-stream = ExtResource("4_fx7na")
+stream = ExtResource("2_xms24")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="LevelMusic"]
 
@@ -83,7 +83,7 @@ level_music = NodePath("../../LevelMusic")
 
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy2" method="_on_level_music_beat_hit"]
+[connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy3" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy2" method="_on_level_music_beat_hit"]
-[connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy3" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy3" method="_on_level_music_beat_hit"]

@@ -3,9 +3,9 @@ extends Node
 
 
 @export var bpm : float = 120.0
-var beat : float = 60.0 / bpm
-var beat_half : float = beat / 2.0
-var beat_16th : float = beat / 32.0
+var beat : float
+var beat_half : float
+var beat_16th : float
 
 @onready var beat_tracker : AudioStreamPlayer = $BeatTracker
 # @onready var music : AudioStreamPlayer = $MusicPlayer
@@ -16,6 +16,9 @@ signal beat_hit
 func _ready():
 	# music.play()
 	beat_tracker.play()
+	beat = 60.0 / bpm
+	beat_half = beat / 2.0
+	beat_16th = beat / 32.0
 
 
 func _physics_process(delta):

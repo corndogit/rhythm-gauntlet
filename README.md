@@ -15,9 +15,11 @@ Blocks will fail if they are close enough on beat (except when blocking fireball
 ### Created by myself
 
 - Player, enemy and item sprites
-- Music: a simple 120BPM beat
 - Sound effects: Created with [jsfxr](https://sfxr.me)
+- Music: a simple 120BPM beat
 
 ### Third-party assets
 
-- World tileset: [Your Basic Platformer Tileset](https://fatmaw.itch.io/basic-platformer-tileset)
+- World tileset: [Your Basic Platformer Tileset](https://fatmaw.itch.io/basic-platformer-tileset) by fatma~w
+- Music: 
+  - ["Noisy Tubes"](https://opengameart.org/content/noisy-tubes) by HorrorPen - 130bpm
