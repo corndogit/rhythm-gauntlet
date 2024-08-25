@@ -38,7 +38,7 @@ func attack():
 
 func block():
 	is_blocking = true
-	if level_music.get_accuracy() >= 1:
+	if level_music.get_accuracy() >= 2:
 		sprite.play("block")
 		can_be_hit = false
 	else:

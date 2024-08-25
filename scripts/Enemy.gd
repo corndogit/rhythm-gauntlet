@@ -11,6 +11,7 @@ var is_dead = false
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var _beat_count = 0
 var _is_debouncing = false
+var _beat_hit = false
 
 @export var level_music : LevelMusic
 @export var max_hp : float = 10
@@ -23,12 +24,14 @@ var _is_debouncing = false
 
 signal enemy_died
 
-func attack(target):
+func attack(target, delay = 0.0):
 	if "Enemies" in target.get_groups():
 		return
 	var hurtbox = target.get_node("HurtboxComponent")
 	if hurtbox:
 		_attack_motion()
+		if delay > 0.0:
+			await get_tree().create_timer(delay).timeout
 		hurtbox.take_damage(1.0, target.can_be_hit)
 
 
@@ -43,6 +46,9 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+	
+	if _beat_hit:
+		_handle_beat(delta)
 	
 	move_and_slide()
 
@@ -69,19 +75,23 @@ func _on_health_component_health_died():
 
 
 func _on_level_music_beat_hit():
-#	print("is debouncing: %s" % str(_is_debouncing))
+	_beat_hit = true
+
+
+func _handle_beat(delta):
+	#	print("is debouncing: %s" % str(_is_debouncing))
 	if is_dead or _is_debouncing:
 		return
 	_is_debouncing = true
 	if _beat_count == 0 and sight.is_colliding():
-		attack(sight.get_collider())
+		attack(sight.get_collider(), delta)
 	
 	_beat_count = fmod(_beat_count + 1, 4)
 	sprite.set_frame(_beat_count)
 	
 	await get_tree().create_timer(0.1).timeout
 	_is_debouncing = false
-
+	_beat_hit = false
 
 func _attack_motion():
 	velocity.y += -100.0
