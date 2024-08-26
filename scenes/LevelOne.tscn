@@ -121,12 +121,12 @@ shape = SubResource("CapsuleShape2D_knaxm")
 [node name="LevelEnemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="LevelEnemies" node_paths=PackedStringArray("level_music") groups=["Enemies"] instance=ExtResource("7_j5mli")]
-position = Vector2(-172, 414)
+position = Vector2(-171, 427)
 level_music = NodePath("../../LevelMusic")
 max_hp = 20.0
 
 [node name="Enemy2" parent="LevelEnemies" node_paths=PackedStringArray("level_music") groups=["Enemies"] instance=ExtResource("7_j5mli")]
-position = Vector2(367, 414)
+position = Vector2(368, 427)
 level_music = NodePath("../../LevelMusic")
 max_hp = 20.0
 
@@ -201,7 +201,7 @@ max_hp = 20.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("level_music") instance=ExtResource("14_mim0j")]
 texture_repeat = 2
-position = Vector2(-891, 412)
+position = Vector2(-1089, 431)
 speed = 300.0
 action_delay = 0.1
 level_music = NodePath("../LevelMusic")

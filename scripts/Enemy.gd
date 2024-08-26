@@ -33,7 +33,7 @@ func attack(target, delay = 0.0):
 	if hurtbox:
 		_attack_motion()
 		if delay > 0.0:
-			await get_tree().create_timer(delay).timeout
+			await get_tree().create_timer(delay * 2).timeout
 		hurtbox.take_damage(base_damage, target.can_be_hit)
 
 

@@ -12,6 +12,7 @@ var hits_taken = 0
 @export var perfect_color : Color = Color(0, 1, 1, 1)
 @export var mid_color : Color = Color(1, 1, 0, 1)
 @export var miss_color : Color = Color(1, 0, 0, 1)
+@export var block_success_color : Color = Color(1, 1, 1, 1)
 
 @onready var display_timer : Timer = get_node("DisplayTimer")
 @onready var judge_label : Label = get_node("HBoxContainer/JudgeLabel")
@@ -44,8 +45,14 @@ func on_player_enemy_hit(accuracy: float):
 
 
 func on_player_blocked(success):
+	_start_display_timer()
 	judge_label.text = "Block"
-	combo_label.text = "✓" if success else "X"
+	if success:
+		judge_label.modulate = block_success_color
+		combo_label.text = "!"
+	else:
+		judge_label.modulate = miss_color
+		combo_label.text = "x"
 	
 	
 func on_game_over():

@@ -43,14 +43,14 @@ func attack():
 
 func block():
 	is_blocking = true
-	var successful_block = level_music.get_accuracy() >= 1
+	var successful_block = level_music.get_accuracy() >= 2
 	if successful_block:
 		sprite.play("block")
 		can_be_hit = false
 	else:
 		sprite.play("hurt")
 	combo.on_player_blocked(successful_block)
-	block_timer.start(action_delay)
+	block_timer.start(action_delay * 2)
 	await sprite.animation_finished
 	sprite.play("default")
 	
@@ -117,14 +117,16 @@ func _show_game_over_dialog():
 
 
 func _on_health_component_health_changed(amount):
-	if not hp_bar:
-		return
 	if amount < hp_bar.value:  # take damage
 		_color_flash(Color(1, 0.8, 0.8, 0.8))
 		sprite.play("hurt")
+		_handle_action_cooldown()
+		combo.hits_taken += 1
 	elif amount > hp_bar.value:  # heal
 		_color_flash(Color(0.8, 1, 0.8, 1))
 	hp_bar.value = amount
+	await sprite.animation_finished
+	sprite.play("default")
 
 
 func _on_health_component_health_died():
