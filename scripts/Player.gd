@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 @export var speed = 0.0
 @export var base_damage = 1.0
-@export var action_delay = 0.5
+@export var action_delay = 0.25
 @export var level_music : LevelMusic
 
 var can_attack = true
@@ -52,7 +52,7 @@ func block():
 		can_be_hit = false
 	else:
 		sprite.play("hurt")
-	var block_time = action_delay * 2
+	var block_time = 0.5
 	combo.on_player_blocked(successful_block, block_time)
 	block_timer.start(block_time)
 	await sprite.animation_finished
@@ -98,6 +98,8 @@ func _handle_input():
 	elif Input.is_action_just_pressed("ui_block"):
 		block()
 		await _handle_action_cooldown()
+	elif Input.is_action_just_pressed("ui_cancel") and GlobalConfig.enable_escape_button:
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
 
 func _handle_movement(delta):

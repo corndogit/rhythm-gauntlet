@@ -21,6 +21,6 @@ func _on_hitbox_body_entered(body: Node2D):
 		var player : Player = body 
 		var hurtbox = player.get_node("HurtboxComponent")
 		if hurtbox:
-			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.05).timeout
 			hurtbox.take_damage(damage, !player.is_blocking)
 	queue_free()

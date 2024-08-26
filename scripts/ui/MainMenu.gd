@@ -11,6 +11,7 @@ const SCENE_TWO_PATH = "res://scenes/LevelTwo.tscn"
 func _ready():
 	play_level_two_button.visible = GlobalConfig.enable_level_two
 	play_level_two_button.disabled = not GlobalConfig.enable_level_two
+	GlobalConfig.enable_escape_button = false
 	$Player/AnimatedSprite2D.play("default")
 	$Player/Camera2D.enabled = false
 	$Player/ProgressBar.visible = false
@@ -41,3 +42,4 @@ func _start_game():
 	$Player/AnimatedSprite2D.play("walk")
 	await get_tree().create_timer(2.0).timeout
 	ScoreManager.reset()
+	GlobalConfig.enable_escape_button = true

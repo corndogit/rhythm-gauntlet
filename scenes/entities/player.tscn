@@ -278,8 +278,6 @@ one_shot = true
 [node name="BlockTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="StoppedTimer" type="Timer" parent="."]
-
 [node name="ComboComponent" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0

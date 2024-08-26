@@ -84,6 +84,7 @@ layout_mode = 2
 text = "Play Level Two"
 
 [node name="OptionsButton" type="Button" parent="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer"]
+visible = false
 layout_mode = 2
 text = "Options
 "

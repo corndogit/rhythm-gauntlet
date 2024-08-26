@@ -18,7 +18,7 @@ You can control the character on the main menu screen to get a feel for the timi
 
 ### Created by myself
 
-- Enemy and item sprites
+- Enemies and some miscellaneous sprites
 - Sound effects: Created with [jsfxr](https://sfxr.me)
 - Menu Music: a simple 120BPM beat
 
@@ -30,7 +30,3 @@ You can control the character on the main menu screen to get a feel for the timi
 - Music: 
   - ["Noisy Tubes"](https://opengameart.org/content/noisy-tubes) by HorrorPen
   - ["Leading the Charge"](https://not-jam.itch.io/not-jam-music-pack-2) by Not Jam
-
-## Known bugs
-
-- Can't block properly while moving
