@@ -141,6 +141,7 @@ func _on_health_component_health_changed(amount):
 
 func _on_health_component_health_died():
 	ScoreManager.title_text = "You Died"
+	ScoreManager.next_level_scene_path = ""
 	can_be_hit = false
 	is_game_over = true
 	sprite.play("death")
