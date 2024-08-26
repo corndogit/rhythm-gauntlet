@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2peaiqxolwf4"]
+
+[ext_resource type="Theme" uid="uid://q2eairjeeypw" path="res://resources/ui_theme.tres" id="1_56qxn"]
+[ext_resource type="Script" path="res://scripts/ui/GameOverDialog.gd" id="2_62avf"]
+
+[node name="GameOverDialog" type="CanvasLayer"]
+script = ExtResource("2_62avf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(500, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_56qxn")
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.231373, 0.231373, 0.231373, 0.839216)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="LabelsHBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/LabelsHBox"]
+layout_mode = 2
+text = "Score: %s"
+horizontal_alignment = 1
+
+[node name="MaxComboLabel" type="Label" parent="MarginContainer/VBoxContainer/LabelsHBox"]
+layout_mode = 2
+text = "Max combo: %s"
+horizontal_alignment = 1
+
+[node name="HitsTakenLabel" type="Label" parent="MarginContainer/VBoxContainer/LabelsHBox"]
+layout_mode = 2
+text = "Hits taken: %s"
+horizontal_alignment = 1
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsHBox"]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="LevelButton" type="Button" parent="MarginContainer/VBoxContainer/ButtonsHBox"]
+layout_mode = 2
+text = "Next Level"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MarginContainer"]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsHBox/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsHBox/LevelButton" to="." method="_on_level_button_pressed"]

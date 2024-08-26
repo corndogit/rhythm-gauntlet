@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://6om1a1ffyuek"]
+[gd_scene load_steps=12 format=3 uid="uid://6om1a1ffyuek"]
 
 [ext_resource type="Script" path="res://scripts/SpinyEnemy.gd" id="1_jvp1o"]
 [ext_resource type="Texture2D" uid="uid://c8w6k4d362dek" path="res://assets/textures/enemies/spiny-guy.png" id="2_8kh07"]
+[ext_resource type="Theme" uid="uid://q2eairjeeypw" path="res://resources/ui_theme.tres" id="3_4yori"]
 [ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_8yn0n"]
 [ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_3r45w"]
 
@@ -72,6 +73,7 @@ offset_right = 66.0
 offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_4yori")
 max_value = 10.0
 step = 1.0
 

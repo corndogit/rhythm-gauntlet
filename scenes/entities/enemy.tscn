@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://btk0i80rjdxox"]
+[gd_scene load_steps=12 format=3 uid="uid://btk0i80rjdxox"]
 
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_27g40"]
 [ext_resource type="Texture2D" uid="uid://dh27r6t24v6qo" path="res://assets/textures/enemies/goblin.png" id="2_j504q"]
+[ext_resource type="Theme" uid="uid://q2eairjeeypw" path="res://resources/ui_theme.tres" id="3_1jg51"]
 [ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_aeje5"]
 [ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_r5mc5"]
 
@@ -70,6 +71,7 @@ offset_right = 66.0
 offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_1jg51")
 max_value = 10.0
 step = 1.0
 

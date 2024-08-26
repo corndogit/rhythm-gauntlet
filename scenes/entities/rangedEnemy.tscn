@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3bdoa6h74qlp"]
+[gd_scene load_steps=13 format=3 uid="uid://b3bdoa6h74qlp"]
 
 [ext_resource type="Script" path="res://scripts/RangedEnemy.gd" id="1_4octs"]
 [ext_resource type="Texture2D" uid="uid://ckr83i7lsyydq" path="res://assets/textures/enemies/lizard-mage.png" id="2_04sbn"]
 [ext_resource type="PackedScene" uid="uid://bt03an2qhrn2h" path="res://scenes/components/health_component.tscn" id="3_f4aq6"]
+[ext_resource type="Theme" uid="uid://q2eairjeeypw" path="res://resources/ui_theme.tres" id="3_lb14e"]
 [ext_resource type="PackedScene" uid="uid://dmx4sxf2vc15g" path="res://scenes/components/hurtbox_component.tscn" id="4_kbpfc"]
 [ext_resource type="PackedScene" uid="uid://dn78sk1peu4s5" path="res://scripts/components/fireball_emitter_component.tscn" id="5_1wjy8"]
 
@@ -71,6 +72,7 @@ offset_right = 66.0
 offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_lb14e")
 max_value = 10.0
 step = 1.0
 

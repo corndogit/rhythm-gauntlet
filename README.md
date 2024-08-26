@@ -1,4 +1,4 @@
-# TwoButtonBashers
+# Rhythm Gauntlet
 
 A rhythm adventure game made for [Solo Dev Game Jam #4](https://itch.io/jam/solo-dev-game-jam-4)
 
@@ -10,16 +10,19 @@ Blocks will fail if they are close enough on beat (except when blocking fireball
 - Key Z: attack
 - Key X: block
 
+You can control the character on the main menu screen to get a feel for the timing!
+
 ## Assets used
 
 ### Created by myself
 
-- Player, enemy and item sprites
+- Enemy and item sprites
 - Sound effects: Created with [jsfxr](https://sfxr.me)
-- Music: a simple 120BPM beat
+- Menu Music: a simple 120BPM beat
 
 ### Third-party assets
 
+- Player: [Knight](https://xzany.itch.io/free-knight-2d-pixel-art) by xzany
 - World tileset: [Your Basic Platformer Tileset](https://fatmaw.itch.io/basic-platformer-tileset) by fatma~w
 - Font: [Retro Gaming](https://www.dafont.com/retro-gaming.font) by Daymarius
 - Music: 

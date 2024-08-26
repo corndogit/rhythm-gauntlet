@@ -1,6 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://q2eairjeeypw"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://q2eairjeeypw"]
 
 [ext_resource type="FontFile" uid="uid://rl1fen8r4r7v" path="res://assets/retro_gaming.ttf" id="1_b2kmi"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkbr5"]
+bg_color = Color(1, 0.266667, 0.360784, 1)
+
 [resource]
 default_font = ExtResource("1_b2kmi")
+Button/font_sizes/font_size = 20
+Label/font_sizes/font_size = 20
+ProgressBar/font_sizes/font_size = 24
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_pkbr5")
