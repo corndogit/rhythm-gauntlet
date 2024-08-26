@@ -1,6 +1,6 @@
 # Rhythm Gauntlet
 
-![logo](.github\images\logo.png)
+![logo](.github/images/logo.png)
 
 A rhythm adventure game made for [Solo Dev Game Jam #4](https://itch.io/jam/solo-dev-game-jam-4).
 
@@ -17,8 +17,8 @@ Blocks will fail if they are not close enough on beat (blocking does not need to
 
 You can control the character on the main menu screen to get a feel for the timing!
 
-![screenshot from level 1](.github\images\1.png)
-![screenshot from level 2](.github\images\2.png)
+![screenshot from level 1](.github/images/1.png)
+![screenshot from level 2](.github/images/2.png)
 
 ## Assets used
 
