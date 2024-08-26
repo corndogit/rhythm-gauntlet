@@ -18,6 +18,7 @@ config/icon="res://default-icon.svg"
 [autoload]
 
 ScoreManager="*res://scripts/autoload/ScoreManager.gd"
+GlobalConfig="*res://scripts/autoload/global_config.gd"
 
 [input]
 

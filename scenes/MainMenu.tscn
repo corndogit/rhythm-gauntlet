@@ -25,7 +25,7 @@ script = ExtResource("1_6q21j")
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
+offset_right = 1162.0
 offset_bottom = 530.0
 theme = ExtResource("2_v0jtl")
 
@@ -78,6 +78,10 @@ alignment = 1
 [node name="PlayGameButton" type="Button" parent="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 text = "Play Game"
+
+[node name="PlayLevelTwoButton" type="Button" parent="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Play Level Two"
 
 [node name="OptionsButton" type="Button" parent="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
@@ -155,3 +159,4 @@ position = Vector2(1051, 426)
 base_damage = 0.0
 
 [connection signal="pressed" from="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer/PlayGameButton" to="." method="_on_play_game_button_pressed"]
+[connection signal="pressed" from="Control/Background/VBoxContainer/TitleContainer/VBoxContainer/ButtonsContainer/PlayLevelTwoButton" to="." method="_on_play_level_two_button_pressed"]

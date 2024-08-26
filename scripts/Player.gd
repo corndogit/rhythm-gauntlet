@@ -36,7 +36,8 @@ func attack():
 		if hurtbox:
 			var accuracy = level_music.get_accuracy()
 			hurtbox.take_damage(base_damage * accuracy, enemy.can_be_hit)
-			combo.on_player_enemy_hit(accuracy)
+			if enemy.can_be_hit:
+				combo.on_player_enemy_hit(accuracy)
 	await sprite.animation_finished
 	sprite.play("default")
 
@@ -151,6 +152,7 @@ func _on_attack_timer_timeout():
 
 func _on_goal_level_finish():
 	ScoreManager.title_text = "You Win!"
+	GlobalConfig.enable_level_two = true
 	is_game_over = true
 	combo.on_game_over()
 	_show_game_over_dialog()
