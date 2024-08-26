@@ -31,7 +31,6 @@ func attack(target, delay = 0.0):
 		return
 	var hurtbox = target.get_node("HurtboxComponent")
 	if hurtbox:
-		_attack_motion()
 		if delay > 0.0:
 			await get_tree().create_timer(delay * 2).timeout
 		hurtbox.take_damage(base_damage, target.can_be_hit)
@@ -84,8 +83,10 @@ func _handle_beat(delta):
 	if is_dead or _is_debouncing:
 		return
 	_is_debouncing = true
-	if _beat_count == 0 and sight.is_colliding():
-		attack(sight.get_collider(), delta)
+	if _beat_count == 0:
+		_attack_motion()
+		if sight.is_colliding():
+			attack(sight.get_collider(), delta)
 	
 	_beat_count = fmod(_beat_count + 1, 4)
 	sprite.set_frame(_beat_count)

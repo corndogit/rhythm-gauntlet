@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bysb2jy67amnb"]
+
+[ext_resource type="Script" path="res://scenes/ui/LevelHUD.gd" id="1_3at1x"]
+[ext_resource type="Texture2D" uid="uid://beadmrq60rfmm" path="res://icon.svg" id="2_kf4of"]
+
+[node name="UI" type="ParallaxBackground"]
+layer = -1
+script = ExtResource("1_3at1x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -484.0
+offset_top = -87.0
+offset_right = -452.0
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+
+[node name="BeatIndicator" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_kf4of")

@@ -9,6 +9,7 @@ extends CharacterBody2D
 
 var can_attack = true
 var is_blocking = false
+var is_attacking = false
 var can_be_hit = true
 var is_game_over = false
 var has_stopped_once = false
@@ -29,6 +30,7 @@ signal player_blocked(success: bool)
 
 
 func attack():
+	is_attacking = true
 	sprite.play("attack")
 	if is_facing_enemy():
 		var enemy = sight.get_collider()
@@ -50,8 +52,9 @@ func block():
 		can_be_hit = false
 	else:
 		sprite.play("hurt")
-	combo.on_player_blocked(successful_block)
-	block_timer.start(action_delay * 2)
+	var block_time = action_delay * 2
+	combo.on_player_blocked(successful_block, block_time)
+	block_timer.start(block_time)
 	await sprite.animation_finished
 	sprite.play("default")
 	
@@ -79,7 +82,9 @@ func _color_flash(color):
 
 func _handle_action_cooldown():
 	can_attack = false
+	is_attacking = true
 	attack_timer.start(action_delay)
+	await attack_timer.timeout
 
 
 func _handle_input():
@@ -89,10 +94,10 @@ func _handle_input():
 
 	if Input.is_action_just_pressed("ui_attack"):
 		attack()
-		_handle_action_cooldown()
+		await _handle_action_cooldown()
 	elif Input.is_action_just_pressed("ui_block"):
 		block()
-		_handle_action_cooldown()
+		await _handle_action_cooldown()
 
 
 func _handle_movement(delta):
@@ -101,13 +106,15 @@ func _handle_movement(delta):
 		velocity.y += gravity * delta
 
 	# keep moving unless sight is intercepted by an enemy
-	if not is_facing_enemy() and not is_blocking:
+	elif not is_facing_enemy() and not is_blocking and not is_attacking:
 		velocity.x = speed
-		sprite.play("walk")
 		has_stopped_once = false
 	else:
 		_stop_moving()
-
+	
+	if velocity.x > 0 and not is_blocking and not is_attacking:
+		sprite.play("walk")
+	
 	move_and_slide()
 
 
@@ -148,6 +155,7 @@ func _on_block_timer_timeout():
 
 func _on_attack_timer_timeout():
 	can_attack = true
+	is_attacking = false
 
 
 func _on_goal_level_finish():

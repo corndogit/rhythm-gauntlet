@@ -34,3 +34,4 @@ func _on_level_button_pressed():
 		get_tree().reload_current_scene()
 	else:
 		get_tree().change_scene_to_file(scene_path)
+	ScoreManager.next_level_scene_path = ""

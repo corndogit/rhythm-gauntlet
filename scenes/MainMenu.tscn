@@ -143,7 +143,7 @@ layer_0/tile_data = PackedInt32Array(589823, 3, 2, 655359, 3, 3, 720895, 3, 4, 7
 
 [node name="Player" parent="." node_paths=PackedStringArray("level_music") instance=ExtResource("13_6aqsr")]
 texture_repeat = 2
-position = Vector2(945, 429)
+position = Vector2(946, 442)
 disable_mode = 1
 speed = 300.0
 base_damage = 0.0

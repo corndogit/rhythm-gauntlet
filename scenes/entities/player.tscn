@@ -235,7 +235,6 @@ size = Vector2(88, 125)
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(94, 381)
 script = ExtResource("1_xuwx2")
-action_delay = 1.5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(64, -32)
@@ -308,7 +307,6 @@ text = "69
 "
 
 [node name="DisplayTimer" type="Timer" parent="ComboComponent"]
-wait_time = 3.0
 one_shot = true
 
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

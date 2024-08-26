@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://1oxssc6aksab"]
+[gd_scene load_steps=26 format=3 uid="uid://1oxssc6aksab"]
 
 [ext_resource type="Script" path="res://scripts/LevelMusic.gd" id="1_6drd1"]
 [ext_resource type="AudioStream" uid="uid://bqm8u67e1qxvu" path="res://assets/sounds/music/130bpm.ogg" id="2_yy50j"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3bdoa6h74qlp" path="res://scenes/entities/rangedEnemy.tscn" id="13_rtqu5"]
 [ext_resource type="PackedScene" uid="uid://cm1jsatwfc6nk" path="res://scenes/entities/player.tscn" id="14_mim0j"]
 [ext_resource type="Texture2D" uid="uid://ywbajbfyyrkp" path="res://assets/textures/level/Background.png" id="15_2hdjd"]
+[ext_resource type="PackedScene" uid="uid://bysb2jy67amnb" path="res://scenes/ui/LevelHUD.tscn" id="17_boitm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44vx6"]
 radius = 7.0
@@ -206,6 +207,9 @@ speed = 300.0
 action_delay = 0.1
 level_music = NodePath("../LevelMusic")
 
+[node name="HUD" parent="." instance=ExtResource("17_boitm")]
+layer = 2
+
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy2" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/Enemy3" method="_on_level_music_beat_hit"]
@@ -215,6 +219,7 @@ level_music = NodePath("../LevelMusic")
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy2" method="_on_level_music_beat_hit"]
 [connection signal="beat_hit" from="LevelMusic" to="LevelEnemies/RangedEnemy3" method="_on_level_music_beat_hit"]
+[connection signal="beat_hit" from="LevelMusic" to="HUD" method="_on_level_music_beat_hit"]
 [connection signal="level_finish" from="LevelItems/Goal" to="Player" method="_on_goal_level_finish"]
 [connection signal="body_entered" from="LevelItems/Goal/Area2D" to="LevelItems/Goal" method="_on_area_2d_body_entered"]
 [connection signal="health_changed" from="LevelEnemies/Boss/HealthComponent" to="LevelEnemies/Boss" method="_on_health_component_health_changed" flags=18]

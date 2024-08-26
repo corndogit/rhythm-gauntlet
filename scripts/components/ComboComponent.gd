@@ -20,7 +20,7 @@ var hits_taken = 0
 
 
 func _set_judge_label_text(accuracy: int):
-	_start_display_timer()
+	_start_display_timer(3.0)
 	if accuracy >= 3:
 		judge_label.modulate = perfect_color
 	elif accuracy >= 1:
@@ -30,7 +30,7 @@ func _set_judge_label_text(accuracy: int):
 	judge_label.text = JUDGE_TEXT[accuracy]
 
 func on_player_enemy_hit(accuracy: float):
-	_start_display_timer()
+	_start_display_timer(3.0)
 	if accuracy >= 1:
 		combo += 1
 	else:
@@ -44,8 +44,8 @@ func on_player_enemy_hit(accuracy: float):
 	max_score += 3
 
 
-func on_player_blocked(success):
-	_start_display_timer()
+func on_player_blocked(success, block_time):
+	_start_display_timer(block_time)
 	judge_label.text = "Block"
 	if success:
 		judge_label.modulate = block_success_color
@@ -67,9 +67,9 @@ func _ready():
 	self.visible = false
 
 
-func _start_display_timer():
+func _start_display_timer(time: float):
 	self.visible = true
-	display_timer.start()
+	display_timer.start(time)
 
 
 func _on_display_timer_timeout():

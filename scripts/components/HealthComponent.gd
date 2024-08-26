@@ -18,6 +18,8 @@ func _ready():
 
 
 func take_damage(amount: float):
+	if has_died:
+		return
 	hp -= amount
 	health_changed.emit(hp)
 	if hp <= 0:
