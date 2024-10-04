@@ -269,11 +269,11 @@ target_position = Vector2(-206, 0)
 
 [node name="SpinyEnemy" parent="LevelEnemies" instance=ExtResource("14_3mt05")]
 position = Vector2(2488, 1288)
-max_hp = 12.0
+max_hp = 6.0
 
 [node name="SpinyEnemy2" parent="LevelEnemies" instance=ExtResource("14_3mt05")]
 position = Vector2(3219, 1288)
-max_hp = 12.0
+max_hp = 6.0
 
 [node name="RangedEnemy" parent="LevelEnemies" node_paths=PackedStringArray("level_music") groups=["Enemies"] instance=ExtResource("15_thgmj")]
 position = Vector2(1842, 174)
