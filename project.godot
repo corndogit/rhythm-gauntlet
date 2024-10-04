@@ -20,6 +20,10 @@ config/icon="res://default-icon.svg"
 ScoreManager="*res://scripts/autoload/ScoreManager.gd"
 GlobalConfig="*res://scripts/autoload/global_config.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 ui_attack={
